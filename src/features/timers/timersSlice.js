@@ -1,27 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit'
-import Timer from './Timer'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: [] // 1.0
-}
+  value: []
+};
 
 export const timersSlice = createSlice({
-    name: 'timers',
-    initialState,
-    reducers: {
-  
-      addTimer: (state, action) => {
-        state.value.push(new Timer(action.payload))
-      },
-  
-          toggleTimer: (state, action) => {
-              state.value[action.payload].isRunning = !state.value[action.payload].isRunning
-          },
-          
+  name: 'timers',
+  initialState,
+  reducers: {
+    addTimer: (state, action) => {
+      const { name } = action.payload;
+      state.value.push({ name, time: 0, isRunning: false });
     },
-  })
+    toggleTimer: (state, action) => {
+      const timer = state.value[action.payload];
+      timer.isRunning = !timer.isRunning;
+    },
+  },
+});
 
-// Action creators are generated for each case reducer function
-export const { addTimer, toggleTimer } = timersSlice.actions
+export const { addTimer, toggleTimer } = timersSlice.actions;
 
-export default timersSlice.reducer
+export default timersSlice.reducer;
