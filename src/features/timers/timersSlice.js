@@ -9,16 +9,20 @@ export const timersSlice = createSlice({
   initialState,
   reducers: {
     addTimer: (state, action) => {
-      const { name } = action.payload;
-      state.value.push({ name, time: 0, isRunning: false });
+      state.value.push({ name: action.payload, time: 0, isRunning: false });
     },
     toggleTimer: (state, action) => {
-      const timer = state.value[action.payload];
-      timer.isRunning = !timer.isRunning;
+      state.value[action.payload].isRunning = !state.value[action.payload].isRunning;
+    },
+    update: (state, action) => {
+      state.value.forEach(timer => {
+        if (timer.isRunning) {
+          timer.time += action.payload;
+        }
+      });
     },
   },
 });
 
-export const { addTimer, toggleTimer } = timersSlice.actions;
-
+export const { addTimer, toggleTimer, update } = timersSlice.actions;
 export default timersSlice.reducer;
