@@ -1,11 +1,10 @@
 import React from 'react';
-import './App.css';
 import NewTimer from './components/NewTimer';
 import ListTimers from './components/ListTimers';
 
 function App() {
   return (
-    <div className="App">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <NewTimer />
       <ListTimers />
     </div>

@@ -1,28 +1,40 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-
-import './NewTimer.css'
-
-import { addTimer } from '../features/timers/timersSlice'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTimer } from '../features/timers/timersSlice';
 
 export default function NewTimer() {
-	const [ name, setName ] = useState('')
-	const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
 
-	return (
-		<div className='NewTimer'>
+  const handleAddTimer = () => {
+    dispatch(addTimer({ name, description, time: 0, isRunning: false }));
+    setName('');
+    setDescription('');
+  };
 
-			<input
-				type='text'
-				placeholder="New Timer Name"
-				name="name"
-				value={name}
-				onChange={(e) => setName(e.target.value)} />
-			
-			<button
-				onClick={() => dispatch(addTimer(name))}
-			>Save</button>
-
-		</div>
-	)
-}
+  return (
+    <div className="flex flex-col space-y-4">
+      <input
+        className="border border-gray-300 rounded-md px-4 py-2"
+        type="text"
+        value={name}
+        onChange={e => setName(e.target.value)}
+        placeholder="Timer Name"
+      />
+      <input
+        className="border border-gray-300 rounded-md px-4 py-2"
+        type="text"
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+        placeholder="Timer Description"
+      />
+      <button
+        className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600"
+        onClick={handleAddTimer}
+      >
+        Add Timer
+      </button>
+    </div>
+  );
+};
