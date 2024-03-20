@@ -14,7 +14,7 @@ export default function NewTimer() {
   };
 
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col space-y-4 mb-3">
       <input
         className="border border-gray-300 rounded-md px-4 py-2"
         type="text"
@@ -30,7 +30,7 @@ export default function NewTimer() {
         placeholder="Timer Description"
       />
       <button
-        className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600"
+        className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 pb-3"
         onClick={handleAddTimer}
       >
         Add Timer

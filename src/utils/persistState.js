@@ -3,17 +3,20 @@ const TMRZ_STATE = "TMRZ_STATE"
 // Load State
 export const loadState = () => {
   try {
-  // Grab the state from local storage
-    const serializedState = localStorage.getItem(TMRZ_STATE)
+    const serializedState = localStorage.getItem(TMRZ_STATE);
     if (serializedState === null) {
-      return undefined
+      return undefined;
     }
-    // convert the string into JSON for the Redux store
-    return JSON.parse(serializedState)
-  } catch(err) {
-    return undefined
+    const parsedState = JSON.parse(serializedState);
+    // Reset the time value of each timer to 0 when loading state
+    const initialState = {
+      value: parsedState.value.map(timer => ({ ...timer, time: 0 })),
+    };
+    return initialState;
+  } catch (err) {
+    return undefined;
   }
-}
+};
 
 // Save State
 export const saveState = (state) => {
