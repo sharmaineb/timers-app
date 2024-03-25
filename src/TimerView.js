@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { toggleTimer, resetTimer } from './features/timers/timersSlice';
+import { toggleTimer, resetTimer } from './features/timers/timersSlice.js';
 
 export default function TimerView({ index, name, time, isRunning, description }) {
   const dispatch = useDispatch();

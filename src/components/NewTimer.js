@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTimer } from '../features/timers/timersSlice';
+import { addTimer } from '../features/timers/timersSlice.js';
 
 export default function NewTimer() {
   const dispatch = useDispatch();

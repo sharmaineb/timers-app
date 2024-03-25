@@ -1,6 +1,6 @@
 import React from 'react';
-import NewTimer from './components/NewTimer';
-import ListTimers from './components/ListTimers';
+import NewTimer from './components/NewTimer.js';
+import ListTimers from './components/ListTimers.js';
 
 function App() {
   return (
